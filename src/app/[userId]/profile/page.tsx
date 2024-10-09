@@ -20,7 +20,7 @@ const ProfilePage = () => {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/api/user/${userId}`,
+          `https://expressjs-5gt976du1-dk0333500s-projects.vercel.app/api/user/${userId}`,
           {
             method: "GET",
             headers: {

@@ -27,16 +27,19 @@ export default function Home() {
     console.log("Form Data Submitted:", formData);
 
     try {
-      const response = await fetch("http://localhost:3000/api/users/edit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userId: formData.id,
-          newName: formData.name,
-        }),
-      });
+      const response = await fetch(
+        "https://expressjs-5gt976du1-dk0333500s-projects.vercel.app/api/users/edit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: formData.id,
+            newName: formData.name,
+          }),
+        }
+      );
       const result = await response.json();
       console.log("API Response:", result);
     } catch (error) {

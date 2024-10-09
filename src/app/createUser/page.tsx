@@ -30,20 +30,23 @@ export default function CreateUser() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
-    const response = await fetch("http://localhost:3000/api/create-account", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: formData.username,
-        password: formData.password,
-        email: formData.email,
-        firstName: formData.firstname,
-        lastName: formData.lastname,
-        phone: formData.phone,
-      }),
-    });
+    const response = await fetch(
+      "https://expressjs-5gt976du1-dk0333500s-projects.vercel.app/api/create-account",
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formData.username,
+          password: formData.password,
+          email: formData.email,
+          firstName: formData.firstname,
+          lastName: formData.lastname,
+          phone: formData.phone,
+        }),
+      }
+    );
     console.log(response);
     // Add your form submission logic here
   };

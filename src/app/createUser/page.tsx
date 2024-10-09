@@ -1,8 +1,18 @@
 "use client";
 import { useState } from "react";
 
-export default function createUser() {
-  const [formData, setFormData] = useState({
+// Define the type for form data
+interface FormData {
+  firstname: string;
+  lastname: string;
+  email: string;
+  username: string;
+  password: string;
+  phone: string;
+}
+
+export default function CreateUser() {
+  const [formData, setFormData] = useState<FormData>({
     firstname: "",
     lastname: "",
     email: "",
@@ -11,11 +21,13 @@ export default function createUser() {
     phone: "",
   });
 
-  const handleChange = (e: any) => {
+  // Specify the type for the change event: React.ChangeEvent<HTMLInputElement>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: any) => {
+  // Specify the type for the form submit event: React.FormEvent<HTMLFormElement>
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(formData);
     const response = await fetch("http://localhost:3000/api/create-account", {
@@ -24,7 +36,7 @@ export default function createUser() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: formData.username, // Assuming formData has an id field
+        username: formData.username,
         password: formData.password,
         email: formData.email,
         firstName: formData.firstname,
